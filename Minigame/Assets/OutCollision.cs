@@ -23,7 +23,7 @@ public class OutCollision : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.name == "Bowling Ball")
+        if (col.gameObject.tag == "BowlingBall")
         {
             Debug.Log("Colisión detectada");
             Instantiate(col.gameObject, spawnPosition, transform.rotation);

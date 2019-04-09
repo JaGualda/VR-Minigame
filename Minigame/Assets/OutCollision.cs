@@ -6,26 +6,29 @@ public class OutCollision : MonoBehaviour
 {
 
     public GameObject collision;
-    public GameObject ball;
     public GameObject ballspawn;
+    private Vector3 spawnPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-           
+        spawnPosition = ballspawn.transform.position;  
     }
 
     // Update is called once per frame
     void Update()
     {
-        void OnCollisionEnter(Collision col)
-        {
-            if(col.gameObject.name == "Bowling Ball")
-            {
-                Debug.Log("Colisión detectada");
-                Destroy(col.gameObject);
+      
+    }
 
-            }
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.name == "Bowling Ball")
+        {
+            Debug.Log("Colisión detectada");
+            Instantiate(col.gameObject, spawnPosition, transform.rotation);
+            Destroy(col.gameObject);
+
         }
     }
 }

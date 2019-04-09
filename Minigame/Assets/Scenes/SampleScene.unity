@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d24655217a3968419cc928005746101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collision: {fileID: 0}
+  collision: {fileID: 81357274}
   ball: {fileID: 0}
   ballspawn: {fileID: 1636621424}
 --- !u!1 &125565422

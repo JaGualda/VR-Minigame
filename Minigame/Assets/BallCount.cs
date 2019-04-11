@@ -7,8 +7,9 @@ public class BallCount : MonoBehaviour
 
     public GameObject[] pin;
     public GameObject[] spawnPin;
-    public GameObject refPin;
+    public Rigidbody[] rigidPin;
 
+    private float timer;
     private int counter;
 
     // Start is called before the first frame update
@@ -22,9 +23,18 @@ public class BallCount : MonoBehaviour
     {
         if (counter == 2)
         {
-            counter = 0;
             ResetPins();
-        }  
+            counter = 0;
+        }
+        timer -= Time.deltaTime;
+        if (timer < 0)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                rigidPin[i].constraints = RigidbodyConstraints.None;
+            }
+            timer = 1.00f;
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -41,8 +51,10 @@ public class BallCount : MonoBehaviour
     {
         for(int i=0; i<10; i++)
         {
-            Destroy(pin[i]);
-            Instantiate(refPin, spawnPin[i].transform.position, transform.rotation);
+            rigidPin[i].constraints = RigidbodyConstraints.FreezeRotation;
+            pin[i].transform.rotation = spawnPin[i].transform.rotation;
+            pin[i].transform.position = spawnPin[i].transform.position;
         }
+        timer = 1.00f;
     }
 }

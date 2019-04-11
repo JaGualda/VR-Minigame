@@ -9,7 +9,7 @@ public class BallCount : MonoBehaviour
     public GameObject[] spawnPin;
     public Rigidbody[] rigidPin;
 
-    private float timer;
+    private float timer = 600.00f;
     private int counter;
 
     // Start is called before the first frame update
@@ -26,14 +26,15 @@ public class BallCount : MonoBehaviour
             ResetPins();
             counter = 0;
         }
-        timer -= Time.deltaTime;
+        timer -= Time.deltaTime;        //Timer
         if (timer < 0)
         {
             for (int i = 0; i < 10; i++)
             {
                 rigidPin[i].constraints = RigidbodyConstraints.None;
             }
-            timer = 1.00f;
+            Debug.Log("Constraints clear");
+            timer = 600.00f;
         }
     }
 

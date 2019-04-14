@@ -7,12 +7,12 @@ public class PinDespawn : MonoBehaviour
     public GameObject spawn;
 
     private float timer;
-    private bool collision = false;
+    public bool collision;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        collision = false;
     }
 
     // Update is called once per frame

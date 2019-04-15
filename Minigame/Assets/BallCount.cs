@@ -8,7 +8,7 @@ public class BallCount : MonoBehaviour
     public GameObject[] pin;
     public GameObject[] spawnPin;
     public Rigidbody[] rigidPin;
-    public GameObject sync;
+    public GameObject score;
 
     public float timer = 600.00f;
     private float timer2 = 8.00f;
@@ -32,6 +32,7 @@ public class BallCount : MonoBehaviour
             {
                 ResetPins();
                 counter = 0;
+                score.GetComponent<Score>().ResetScore();
                 timer2 = 8.00f;
             }
         }

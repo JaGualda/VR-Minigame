@@ -5,6 +5,7 @@ using UnityEngine;
 public class PinDespawn : MonoBehaviour
 {
     public GameObject spawn;
+    public GameObject score;
 
     private float timer;
     public bool collision;
@@ -32,8 +33,12 @@ public class PinDespawn : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        timer = 2.00f;
-        collision = true;
+        if(other.name == "TriggerPin")
+        {
+            timer = 2.00f;
+            collision = true;
+            score.GetComponent<Score>().score++;
+        }
     }
 
     public bool GetCollision()

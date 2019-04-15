@@ -32,7 +32,7 @@ public class PinDespawn : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        timer = 3.00f;
+        timer = 2.00f;
         collision = true;
     }
 

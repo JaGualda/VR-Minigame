@@ -21,8 +21,11 @@ public class Score : MonoBehaviour
         shot = trigger.GetComponent<BallCount>().counter;
         gameObject.GetComponent<TextMesh>().text = score.ToString();
         if (score == 10 && (shot == 1 || shot == 0))
+        {
             gameObject.GetComponent<TextMesh>().text = "Strike !";
-        if (score == 10 && shot == 2 && !gameObject.GetComponent<TextMesh>().text.Equals("Strike !"))
+            trigger.GetComponent<BallCount>().strike = true;
+        }    
+        else if (score == 10 && shot == 2 && !gameObject.GetComponent<TextMesh>().text.Equals("Strike !"))
             gameObject.GetComponent<TextMesh>().text = "Spare !";
         
     }

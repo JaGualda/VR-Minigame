@@ -14,6 +14,7 @@ public class BallCount : MonoBehaviour
     private float timer2 = 8.00f;
     public int counter;
     public bool barrera = false;
+    public bool strike = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,7 @@ public class BallCount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (counter == 2)
+        if (counter == 2 || strike)
         {
             barrera = true;
             timer2 -= Time.deltaTime;
@@ -32,6 +33,7 @@ public class BallCount : MonoBehaviour
             {
                 ResetPins();
                 counter = 0;
+                strike = false;
                 score.GetComponent<Score>().ResetScore();
                 timer2 = 8.00f;
             }

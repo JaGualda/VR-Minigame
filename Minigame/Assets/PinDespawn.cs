@@ -35,4 +35,9 @@ public class PinDespawn : MonoBehaviour
         timer = 3.00f;
         collision = true;
     }
+
+    public bool GetCollision()
+    {
+        return collision;
+    }
 }

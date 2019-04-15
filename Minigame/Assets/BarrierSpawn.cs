@@ -6,28 +6,30 @@ public class BarrierSpawn : MonoBehaviour
 {
 
     public GameObject[] pin;
+    public GameObject barrier;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.SetActive(false); 
+        barrier.SetActive(false);
+        //Debug.Log("OK");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (pin[0].GetComponent<PinDespawn>().collision || pin[1].GetComponent<PinDespawn>().collision || pin[2].GetComponent<PinDespawn>().collision ||
-            pin[3].GetComponent<PinDespawn>().collision || pin[4].GetComponent<PinDespawn>().collision || pin[5].GetComponent<PinDespawn>().collision ||
-            pin[6].GetComponent<PinDespawn>().collision || pin[7].GetComponent<PinDespawn>().collision || pin[8].GetComponent<PinDespawn>().collision || pin[9].GetComponent<PinDespawn>().collision)
+        if (pin[0].GetComponent<PinDespawn>().GetCollision() || pin[1].GetComponent<PinDespawn>().GetCollision() || pin[2].GetComponent<PinDespawn>().GetCollision() ||
+            pin[3].GetComponent<PinDespawn>().GetCollision() || pin[4].GetComponent<PinDespawn>().GetCollision() || pin[5].GetComponent<PinDespawn>().GetCollision() ||
+            pin[6].GetComponent<PinDespawn>().GetCollision() || pin[7].GetComponent<PinDespawn>().GetCollision() || pin[8].GetComponent<PinDespawn>().GetCollision() || pin[9].GetComponent<PinDespawn>().GetCollision())
         {
-            Debug.Log("Barra On");
-            gameObject.SetActive(true);
+            //Debug.Log("Barra On");
+            barrier.SetActive(true);
         }
         else
         {
-            Debug.Log("Barra Off");
-            gameObject.SetActive(false);
+            //Debug.Log("Barra Off");
+            barrier.SetActive(false);
         }
                  
     }

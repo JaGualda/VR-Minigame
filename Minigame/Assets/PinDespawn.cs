@@ -8,12 +8,15 @@ public class PinDespawn : MonoBehaviour
     public GameObject score;
 
     private float timer;
+    private AudioSource source;
+    public AudioClip clip;
     public bool collision;
 
     // Start is called before the first frame update
     void Start()
     {
         collision = false;
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -38,6 +41,8 @@ public class PinDespawn : MonoBehaviour
             timer = 2.00f;
             collision = true;
             score.GetComponent<Score>().score++;
+            source.time = 0.2f;
+            source.PlayDelayed(0);
         }
     }
 

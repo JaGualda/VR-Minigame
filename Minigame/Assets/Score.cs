@@ -7,12 +7,14 @@ public class Score : MonoBehaviour
     public int score;
     public GameObject trigger;
     private int shot;
+    //private AudioSource source;
 
     // Start is called before the first frame update
     void Start()
     {
         score = 0;
         gameObject.GetComponent<TextMesh>().text = score.ToString();
+        //source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -24,9 +26,15 @@ public class Score : MonoBehaviour
         {
             gameObject.GetComponent<TextMesh>().text = "Strike !";
             trigger.GetComponent<BallCount>().strike = true;
+            //source.PlayDelayed(0);
         }    
         else if (score == 10 && shot == 2 && !gameObject.GetComponent<TextMesh>().text.Equals("Strike !"))
+        {
             gameObject.GetComponent<TextMesh>().text = "Spare !";
+            //source.PlayDelayed(0);
+        }
+            
+
         
     }
 

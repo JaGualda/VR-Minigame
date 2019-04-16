@@ -7,12 +7,14 @@ public class WhileBallonTrack : MonoBehaviour
 
     public GameObject colliderThrow;
     public bool collision;
+    private AudioSource source;
 
     // Start is called before the first frame update
     void Start()
     {
         colliderThrow.SetActive(false);
         collision = false;
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -39,5 +41,15 @@ public class WhileBallonTrack : MonoBehaviour
             //Debug.Log("Colisión detectada");
             collision = false;
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "BowlingBall")
+        {
+            source.time = 0.15f;
+            source.PlayDelayed(0);
+        }
+
     }
 }

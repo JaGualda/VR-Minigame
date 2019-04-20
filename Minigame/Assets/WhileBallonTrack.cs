@@ -7,7 +7,9 @@ public class WhileBallonTrack : MonoBehaviour
 
     public GameObject colliderThrow;
     public bool collision;
+    public GameObject score;
     private AudioSource source;
+    private float timer;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +17,7 @@ public class WhileBallonTrack : MonoBehaviour
         colliderThrow.SetActive(false);
         collision = false;
         source = GetComponent<AudioSource>();
+        timer = 2.00f;
     }
 
     // Update is called once per frame
@@ -30,7 +33,14 @@ public class WhileBallonTrack : MonoBehaviour
         {
             //Debug.Log("Colisión bola track");
             collision = true;
-            colliderThrow.SetActive(true);       
+            colliderThrow.SetActive(true);
+            if (score.GetComponent<Score>().score > 0)
+                timer -= Time.deltaTime;
+            if(timer < 0)
+            {
+                col.rigidbody.AddForce(100, 0, 0);
+                timer = 2.00f;
+            }
         }    
     }
 
